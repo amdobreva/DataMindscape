@@ -1,0 +1,69 @@
+function matchColumns() {
+  var sheet = SpreadsheetApp.getActiveSheet();
+  var data = sheet.getDataRange().getValues();
+  
+  // Find the column indexes of A, B, D, and E
+  var columnIndexA = 0;
+  var columnIndexB = 1;
+  var columnIndexD = 3;
+  var columnIndexE = 4;
+  
+  // Initialize an empty array to store the % match for each row
+  var matchPercentages = [];
+  
+  // Iterate through each row of data
+  for (var i = 1; i < data.length; i++) {
+    var row = data[i];
+    
+    // Get the values in columns A and B for this row
+    var valueA = row[columnIndexA];
+    var valueB = row[columnIndexB];
+    
+    // Calculate the % match between valueA and all values in column B
+    var maxMatchPercentage = 0;
+    var bestMatchValue = "";
+    for (var j = 1; j < data.length; j++) {
+      var rowB = data[j];
+      var valueBCheck = rowB[columnIndexB];
+      if (valueA && valueBCheck && valueA !== "" && valueBCheck !== "") {
+        var matchPercentage = calculateMatchPercentage(valueA, valueBCheck);
+        if (matchPercentage > maxMatchPercentage) {
+          maxMatchPercentage = matchPercentage;
+          bestMatchValue = valueBCheck;
+        }
+      }
+    }
+    
+    // Store the % match for this row
+    matchPercentages.push(maxMatchPercentage);
+    
+    // Write the matching values to columns D and E
+    sheet.getRange(i + 1, columnIndexD).setValue(valueA);
+    sheet.getRange(i + 1, columnIndexE).setValue(bestMatchValue);
+  }
+  
+  // Write the % match for each row to column F
+  var columnIndexF = 5;
+  for (var i = 0; i < matchPercentages.length; i++) {
+    sheet.getRange(i + 2, columnIndexF).setValue(matchPercentages[i]);
+  }
+}
+
+function calculateMatchPercentage(stringA, stringB) {
+  var lengthA = stringA.length;
+  var lengthB = stringB.length;
+  var lengthMax = Math.max(lengthA, lengthB);
+  
+  var differences = 0;
+  for (var i = 0; i < lengthMax; i++) {
+    var charA = stringA[i];
+    var charB = stringB[i];
+    
+    if (charA !== charB) {
+      differences++;
+    }
+  }
+  
+  var matchPercentage = (1 - differences / lengthMax) * 100;
+  return matchPercentage;
+}
