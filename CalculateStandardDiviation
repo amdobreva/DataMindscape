@@ -1,0 +1,25 @@
+import numpy as np
+
+# Given data
+observations = [
+    (14, 4),
+    (11, 3),
+    (23, 6),
+    (20, 6),
+    (11, 4),
+    (23, 7)
+]
+
+# Extract x and y values
+x_values = [obs[0] for obs in observations]
+y_values = [obs[1] for obs in observations]
+
+# Calculate standard deviations
+std_dev_x = np.std(x_values, ddof=1)  # ddof=1 for sample standard deviation
+std_dev_y = np.std(y_values, ddof=1)
+
+# Display results
+print("x values:", x_values)
+print("y values:", y_values)
+print("Standard Deviation of x:", std_dev_x)
+print("Standard Deviation of y:", std_dev_y)
