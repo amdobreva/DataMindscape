@@ -1,0 +1,21 @@
+import scipy.stats as stats
+
+X̄n = 6.2
+Ȳm = 6
+σ1_sq = 0.1
+σ2_sq = 0.2
+n = 50
+m = 50
+
+# Calculate the degrees of freedom using Welch-Satterthwaite formula
+degrees_of_freedom = ((σ1_sq / n + σ2_sq / m)**2) / ((σ1_sq / n)**2 / (n - 1) + (σ2_sq / m)**2 / (m - 1))
+
+# Calculate the test statistic Tn
+Tn = (X̄n - Ȳm) / ((σ1_sq / n + σ2_sq / m)**0.5)
+
+# Calculate the p-value
+p_value = 2 * (1 - stats.t.cdf(abs(Tn), df=degrees_of_freedom))
+
+print("Degrees of Freedom:", degrees_of_freedom)
+print("Test Statistic Tn:", Tn)
+print("P-value:", p_value)
