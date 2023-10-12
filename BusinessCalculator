@@ -1,0 +1,182 @@
+def calculate_percentage(part, whole):
+    result = (part / whole) * 100
+    explanation = f"{part} is {result:.2f}% of {whole}"
+    return result, explanation
+
+def calculate_tip(total_bill, tip_percent):
+    tip_amount = (tip_percent / 100) * total_bill
+    explanation = f"A {tip_percent}% tip on {total_bill:.2f} is {tip_amount:.2f}"
+    return tip_amount, explanation
+
+def calculate_discount(original_price, discount_percent):
+    discounted_price = original_price - (discount_percent / 100) * original_price
+    explanation = f"A {discount_percent}% discount on {original_price:.2f} is {discounted_price:.2f}"
+    return discounted_price, explanation
+
+def calculate_percentage_change(initial_value, final_value):
+    percent_change = ((final_value - initial_value) / initial_value) * 100
+    explanation = f"The percentage change from {initial_value:.2f} to {final_value:.2f} is {percent_change:.2f}%"
+    return percent_change, explanation
+
+def calculate_markup(original_cost, markup_percent):
+    selling_price = original_cost + (markup_percent / 100) * original_cost
+    explanation = f"A {markup_percent}% markup on {original_cost:.2f} cost is {selling_price:.2f}"
+    return selling_price, explanation
+
+def calculate_traders_calculator(net_price, vat_percent):
+    gross_price = net_price + (vat_percent / 100) * net_price
+    explanation = f"A {vat_percent}% VAT on net price {net_price:.2f} is {gross_price:.2f}"
+    return gross_price, explanation
+
+def calculate_vat(gross_price, vat_percent):
+    net_price = gross_price / (1 + (vat_percent / 100))
+    explanation = f"The net price after {vat_percent}% VAT on {gross_price:.2f} is {net_price:.2f}"
+    return net_price, explanation
+
+def calculate_sales_tax(sales_price, tax_percent):
+    tax_amount = (tax_percent / 100) * sales_price
+    explanation = f"The sales tax amount at {tax_percent}% on {sales_price:.2f} is {tax_amount:.2f}"
+    return tax_amount, explanation
+
+def calculate_net_price(gross_price, tax_percent):
+    net_price = gross_price / (1 + (tax_percent / 100))
+    explanation = f"The net price after {tax_percent}% sales tax on {gross_price:.2f} is {net_price:.2f}"
+    return net_price, explanation
+
+def calculate_gross_price(net_price, tax_percent):
+    gross_price = net_price + (tax_percent / 100) * net_price
+    explanation = f"The gross price with {tax_percent}% sales tax on net price {net_price:.2f} is {gross_price:.2f}"
+    return gross_price, explanation
+
+def calculate_profit(cost_price, selling_price):
+    profit = selling_price - cost_price
+    explanation = f"The profit from selling at {selling_price:.2f} with a cost price of {cost_price:.2f} is {profit:.2f}"
+    return profit, explanation
+
+def calculate_compound_interest(principal, rate, time):
+    compound_interest = principal * ((1 + (rate / 100)) ** time - 1)
+    explanation = f"The compound interest after {time} years at {rate}% is {compound_interest:.2f}"
+    return compound_interest, explanation
+
+def calculate_car(initial_value, final_value, years):
+    car = ((final_value / initial_value) ** (1 / years)) - 1
+    explanation = f"The Compound Annual Growth Rate (CAGR) over {years} years is {car:.2%}"
+    return car, explanation
+
+def calculate_cumulative_growth(initial_value, annual_growth_rate, years):
+    final_value = initial_value * ((1 + annual_growth_rate / 100) ** years)
+    explanation = f"The final value after {years} years with an annual growth rate of {annual_growth_rate:.2f}% is {final_value:.2f}"
+    return final_value, explanation
+
+def calculate_inflation(initial_value, inflation_rate, years):
+    final_value = initial_value * ((1 + inflation_rate / 100) ** years)
+    explanation = f"The value after {years} years with an inflation rate of {inflation_rate:.2f}% is {final_value:.2f}"
+    return final_value, explanation
+
+def calculate_doubling_time(rate_of_growth):
+    time_to_double = 72 / rate_of_growth
+    explanation = f"The time to double your investment at a growth rate of {rate_of_growth:.2f}% is approximately {time_to_double:.2f} years"
+    return time_to_double, explanation
+
+def main():
+    while True:
+        print("Choose a calculation option:")
+        print("1. Simple Percentage")
+        print("2. Tip")
+        print("3. Discount")
+        print("4. Percentage Increase/Decrease")
+        print("5. Markup/Profit Margin")
+        print("6. Traders Calculator (VAT)")
+        print("7. VAT")
+        print("8. Sales Tax")
+        print("9. My Net Price")
+        print("10. My Gross Price")
+        print("11. Profit")
+        print("12. Compound Interest")
+        print("13. Compound Annual Growth Rate (CAGR)")
+        print("14. Cumulative Growth")
+        print("15. Inflation")
+        print("16. Doubling Time (Rule of 72)")
+        print("17. Exit")
+
+        choice = input("Enter the option (1/2/3/4/5/6/7/8/9/10/11/12/13/14/15/16/17): ")
+
+        if choice == '1':
+            part = float(input("Enter the part: "))
+            whole = float(input("Enter the whole: "))
+            result, explanation = calculate_percentage(part, whole)
+        elif choice == '2':
+            total_bill = float(input("Enter the total bill amount: "))
+            tip_percent = float(input("Enter the tip percentage: "))
+            result, explanation = calculate_tip(total_bill, tip_percent)
+        elif choice == '3':
+            original_price = float(input("Enter the original price: "))
+            discount_percent = float(input("Enter the discount percentage: "))
+            result, explanation = calculate_discount(original_price, discount_percent)
+        elif choice == '4':
+            initial_value = float(input("Enter the initial value: "))
+            final_value = float(input("Enter the final value: "))
+            result, explanation = calculate_percentage_change(initial_value, final_value)
+        elif choice == '5':
+            original_cost = float(input("Enter the original cost: "))
+            markup_percent = float(input("Enter the markup percentage: "))
+            result, explanation = calculate_markup(original_cost, markup_percent)
+        elif choice == '6':
+            net_price = float(input("Enter the net price: "))
+            vat_percent = float(input("Enter the VAT percentage: "))
+            result, explanation = calculate_traders_calculator(net_price, vat_percent)
+        elif choice == '7':
+            gross_price = float(input("Enter the gross price: "))
+            vat_percent = float(input("Enter the VAT percentage: "))
+            result, explanation = calculate_vat(gross_price, vat_percent)
+        elif choice == '8':
+            sales_price = float(input("Enter the sales price: "))
+            tax_percent = float(input("Enter the sales tax percentage: "))
+            result, explanation = calculate_sales_tax(sales_price, tax_percent)
+        elif choice == '9':
+            gross_price = float(input("Enter the gross price: "))
+            tax_percent = float(input("Enter the sales tax percentage: "))
+            result, explanation = calculate_net_price(gross_price, tax_percent)
+        elif choice == '10':
+            net_price = float(input("Enter the net price: "))
+            tax_percent = float(input("Enter the sales tax percentage: "))
+            result, explanation = calculate_gross_price(net_price, tax_percent)
+        elif choice == '11':
+            cost_price = float(input("Enter the cost price: "))
+            selling_price = float(input("Enter the selling price: "))
+            result, explanation = calculate_profit(cost_price, selling_price)
+        elif choice == '12':
+            principal = float(input("Enter the principal amount: "))
+            rate = float(input("Enter the annual interest rate (in percentage): "))
+            time = float(input("Enter the time (in years): "))
+            result, explanation = calculate_compound_interest(principal, rate, time)
+        elif choice == '13':
+            initial_value = float(input("Enter the initial value: "))
+            final_value = float(input("Enter the final value: "))
+            years = float(input("Enter the number of years: "))
+            result, explanation = calculate_car(initial_value, final_value, years)
+        elif choice == '14':
+            initial_value = float(input("Enter the initial value: "))
+            annual_growth_rate = float(input("Enter the annual growth rate (in percentage): "))
+            years = float(input("Enter the number of years: "))
+            result, explanation = calculate_cumulative_growth(initial_value, annual_growth_rate, years)
+        elif choice == '15':
+            initial_value = float(input("Enter the initial value: "))
+            inflation_rate = float(input("Enter the annual inflation rate (in percentage): "))
+            years = float(input("Enter the number of years: "))
+            result, explanation = calculate_inflation(initial_value, inflation_rate, years)
+        elif choice == '16':
+            rate_of_growth = float(input("Enter the rate of growth (in percentage): "))
+            result, explanation = calculate_doubling_time(rate_of_growth)
+        elif choice == '17':
+            print("Exiting the calculator.")
+            break
+        else:
+            print("Invalid choice. Please select a valid option.")
+            continue
+
+        print(f"Result: {result:.2f}")
+        print(explanation)
+
+if __name__ == "__main__":
+    main()
